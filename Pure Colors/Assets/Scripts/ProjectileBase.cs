@@ -20,4 +20,14 @@ public abstract class ProjectileBase : MonoBehaviour
     {
         _rigidbody.velocity = direction * speed;
     }
+    
+    public virtual void OnTriggerEnter2D(Collider2D col)
+    {
+        print("collided");
+        var damagable = col.gameObject.GetComponent<IDamagable>();
+        if(damagable == null) return;
+        damagable.TakeDamage(damage);
+        print("Dealt damage to" + col.gameObject.name);
+        Destroy(gameObject);
+    }
 }

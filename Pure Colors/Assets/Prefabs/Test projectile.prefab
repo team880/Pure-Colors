@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9138482160915608888}
   - component: {fileID: 8551105257633124046}
   - component: {fileID: -3274623994721522121}
+  - component: {fileID: 3254830381826582186}
   m_Layer: 0
   m_Name: Test projectile
   m_TagString: Untagged
@@ -115,5 +116,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectile: 0
-  damage: 0
+  damage: 1
   projectileSpeed: 15
+--- !u!58 &3254830381826582186
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349222143137100371}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4000001
