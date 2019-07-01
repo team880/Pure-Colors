@@ -10,8 +10,9 @@ public abstract class ProjectileBase : MonoBehaviour
     public float projectileSpeed;
     private Rigidbody2D _rigidbody;
 
-    private void Start()
+    public virtual void Start()
     {
+        gameObject.layer = 9; //Projectile layer
         _rigidbody = GetComponent<Rigidbody2D>();
     }
     public abstract Vector2 SetFlightDirection();
@@ -23,11 +24,16 @@ public abstract class ProjectileBase : MonoBehaviour
     
     public virtual void OnTriggerEnter2D(Collider2D col)
     {
+
         print("collided");
         var damagable = col.gameObject.GetComponent<IDamagable>();
         if(damagable == null) return;
         damagable.TakeDamage(damage);
         print("Dealt damage to" + col.gameObject.name);
         Destroy(gameObject);
+    }
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if(col.gameObject.layer == 10) Destroy(gameObject); //screen border
     }
 }

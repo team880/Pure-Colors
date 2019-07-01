@@ -7,6 +7,9 @@ public class PlayerShoot : MonoBehaviour
     [Header("Shooting")] //random comment
     public GameObject projectile;
     public float shootSpeed = 0.1f; //time between projectiles
+    private float lastShot;
+    private bool shooting;
+
     [Header("Slashing")]
     public GameObject swordSlash;
     [Range(0, 1)]
@@ -36,31 +39,29 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot(string shootBtn)
     {
-        if(Input.GetButtonDown(shootBtn))
+        shooting = Input.GetButton(shootBtn);
+        if(!shooting) return;
+
+        if(Time.time >= lastShot + shootSpeed)
         {
-            StartCoroutine("ShootRepeating",  projectile);
-        }
-        if(Input.GetButtonUp(shootBtn))
-        {
-            StopCoroutine("ShootRepeating");
+            ShootProjectile(projectile);
         }
     }
-
-    private IEnumerator ShootRepeating (GameObject projectile)
+    private void ShootProjectile(GameObject projectile)
     {
-        while(true)
-        {
-            var proj = Instantiate(projectile, transform.position, Quaternion.identity);
-            proj.transform.up = _input.GetAimDirection(transform.position, _input.GetCursorPosition());
-            yield return new WaitForSeconds(shootSpeed);
-        }
+        var proj = Instantiate(projectile, transform.position, Quaternion.identity);
+        proj.transform.up = _input.GetAimDirection(transform.position, _input.GetCursorPosition());
+        lastShot = Time.time;
     }
 
     public void SwordSlash(Vector2 direction)
     {
         if(direction == Vector2.zero) direction = Vector2.right; //Edgecase but might as well
-        swordSlash.transform.localPosition = direction * slashOffset;
-        swordSlash.transform.up = direction;
+        if(swordSlash.activeSelf == false)
+        {
+            swordSlash.transform.up = direction;
+            swordSlash.transform.localPosition = direction * slashOffset;
+        }
         if(Input.GetButtonDown(_input.slashButton) && Time.time > lastSlash + slashCooldown)
         {
             lastSlash = Time.time;
