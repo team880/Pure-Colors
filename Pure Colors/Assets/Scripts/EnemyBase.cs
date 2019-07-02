@@ -24,7 +24,6 @@ public class EnemyBase : MonoBehaviour, IDamagable
     {
         rigidbody = GetComponent<Rigidbody2D>();
         health = maxHealth;
-        print(Health);
     }
 
     public virtual void TakeDamage(int incomingDamage)

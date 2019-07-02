@@ -24,11 +24,6 @@ public class PlayerMovement : MonoBehaviour
        GetComponents();
     }
 
-    private void Update()
-    {
-        //print(_input.GetAimDirection(transform.position, _input.GetCursorPosition()));
-    }
-
     private void FixedUpdate()
     {
         MovePlayer(_input.inputVector, Input.GetButton(_input.slowDownButton));
@@ -67,7 +62,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!Input.GetButtonDown(_input.dashButton) || dashing) return;
         StartCoroutine("DashCoroutine", direction);
-        print("dash");
     }
     private IEnumerator DashCoroutine(Vector2 direction)
     {

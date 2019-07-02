@@ -7,7 +7,6 @@ public class TestEnemy : EnemyBase
     public override void Start()
     {
         base.Start();
-        print("Hello");   
     }
 
     // Update is called once per frame
