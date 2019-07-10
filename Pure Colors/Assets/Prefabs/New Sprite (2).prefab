@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   health: 0
-  moveSpeed: 3
+  moveSpeed: 5
 --- !u!58 &6344143937826710317
 CircleCollider2D:
   m_ObjectHideFlags: 0

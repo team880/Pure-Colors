@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class TestEnemy : EnemyBase
 {
+
+    private float startTime;
     public override void Start()
     {
+        startTime = Time.time;
         base.Start();
     }
 
@@ -20,9 +23,10 @@ public class TestEnemy : EnemyBase
     {
         Vector2 vec = new Vector2();
         vec.x = -0.5f;
-        vec.y = Mathf.Sin(Time.time * 4);
+        vec.y = Mathf.Cos((Time.time - startTime) * 4); 
         vec = Vector3.Normalize(vec);
         return vec;
     }
 
 }
+
