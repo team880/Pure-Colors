@@ -10,8 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: New miniwave 2
+  m_Name: New miniwave 1
   m_EditorClassIdentifier: Assembly-CSharp::MiniWavesScriptableObject
   miniWave:
-    enemiesInMiniWave: []
-    delay: 0
+    enemiesInMiniWave:
+    - enemy: {fileID: 6344143937826710306, guid: f0e558e545253234e9d1a86f261a5020,
+        type: 3}
+      ySpawnPos: 1.5
+    - enemy: {fileID: 6344143937826710306, guid: f0e558e545253234e9d1a86f261a5020,
+        type: 3}
+      ySpawnPos: -1.5
+    delay: 1

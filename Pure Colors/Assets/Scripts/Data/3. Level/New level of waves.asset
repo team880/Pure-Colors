@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: New level of waves
   m_EditorClassIdentifier: Assembly-CSharp::LevelScriptableObject
-  waves: []
+  waves:
+  - {fileID: 11400000, guid: 22f62d5641e674a48b06c97b1726b8ee, type: 2}
+  - {fileID: 11400000, guid: d6d7a530be2e1cd49b82834d104dfb68, type: 2}
+  - {fileID: 11400000, guid: 22f62d5641e674a48b06c97b1726b8ee, type: 2}
